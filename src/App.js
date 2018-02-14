@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/es/integration/react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
+import Main from './components/Main';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    render() {
+        const { store, persistor } = this.props;
+        return (
+            <Provider store={store}>
+                <PersistGate loading={<span>Loading...</span>} persistor={persistor}>
+                    <BrowserRouter>
+                        <Switch>
+                            <Route exact path="/" component={Main}/>
+                            {/* <Route path="/app" component={PublicRoutes}/> */}
+                            <Redirect to="/"/>
+                        </Switch>
+                    </BrowserRouter>
+                </PersistGate>
+            </Provider>
+        );
+    }
 }
 
 export default App;
