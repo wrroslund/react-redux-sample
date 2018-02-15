@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 // import {Grid,Row} from 'react-bootstrap';
 import {Container,Row,Col} from 'reactstrap';
 import Matter from '../components/Matter';
+import EntityList from '../components/EntityList';
 import {fetchMatter} from '../actions';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -25,6 +26,11 @@ class ActiveMatter extends Component {
                     <Col>
                         {!isFetching && matter && <Matter matter={matter} isFetching={isFetching}/>}
                         {isFetching && <div>...</div>}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        {!isFetching && matter && <EntityList/>}
                     </Col>
                 </Row>
             </Container>
