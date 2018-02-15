@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
+import {Grid,Row} from 'react-bootstrap';
+import MatterList from './MatterList';
+
 
 class Main extends Component {
     render() {
@@ -9,7 +12,10 @@ class Main extends Component {
                     <img src={logo} className="App-logo" alt="logo" />
                     <h1 className="App-title">Welcome to React</h1>
                 </header>
+                
+
             </div>
+            
         );
     }
 }
